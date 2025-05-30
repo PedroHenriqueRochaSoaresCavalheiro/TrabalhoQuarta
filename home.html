@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciar Usuários</title>
+  <link rel="stylesheet" href="Estilo.css" />
+
+</head>
+<body>
+  <h1>Adicionar Usuário</h1>
+  <form method="POST" action="/adicionar">
+    <label for="login">Login:</label>
+    <input name="login" id="login" required>
+
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha" id="senha" required>
+
+    <label for="perfil">Perfil:</label>
+    <select name="perfil" id="perfil">
+      <option value="Funcionario">Funcionario</option>
+      <option value="Gerente">Gerente</option>
+    </select>
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <h2>Usuários Existentes</h2>
+  <div id="usuarios">
+    <!-- Aqui será injetada a lista pelo server.js -->
+  </div>
+</body>
+</html>

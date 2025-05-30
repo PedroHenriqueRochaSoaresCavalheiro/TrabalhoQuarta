@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="Estilo.css" />
+</head>
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label>Login:</label>
+    <input type="text" id="login" required /><br><br>
+
+    <label>Senha:</label>
+    <input type="password" id="senha" required /><br><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p id="mensagem" style="color: red;"></p>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const login = document.getElementById('login').value;
+      const senha = document.getElementById('senha').value;
+
+      const resposta = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, senha })
+      });
+
+      const resultado = await resposta.json();
+
+      if (resultado.sucesso) {
+        window.location.href = '/home.html';
+      } else {
+        document.getElementById('mensagem').innerText = 'Login ou Senha incorretos';
+      }
+    });
+  </script>
+</body>
+</html>
